@@ -1,0 +1,15 @@
+package MTG.Card_Defs;
+import MTG.Card;
+
+/**
+ * Summary description for Land.
+ */
+public class Land
+{
+	public Land()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}

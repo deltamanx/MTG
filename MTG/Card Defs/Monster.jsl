@@ -1,0 +1,15 @@
+package MTG.Card_Defs;
+import MTG.*;
+
+/**
+ * Summary description for Monster.
+ */
+public class Monster
+{
+	public Monster()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}

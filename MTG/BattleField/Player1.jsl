@@ -1,0 +1,14 @@
+package MTG.BattleField;
+
+/**
+ * Summary description for Player1.
+ */
+public class Player1
+{
+	public Player1()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}

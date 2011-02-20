@@ -1,0 +1,22 @@
+package MTG;
+import MTG.*;
+/**
+ * Summary description for RedInstant.
+ */
+public class RedInstant extends Card
+{
+	static Card lightningBolt;
+
+	public void lightningBolt()
+	{
+		lightningBolt = new Card("Lightning Bolt", Type.INSTANT, CardColor.RED);
+		lightningBolt.setCardText("Deals 3 damage to taget creature or player");
+		lightningBolt.setManaType1(CardColor.RED);
+		lightningBolt.setManaCost1(1);
+	}
+
+	public RedInstant()
+	{
+		lightningBolt();
+	}
+}

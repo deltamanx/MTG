@@ -1,0 +1,18 @@
+package MTG;
+import MTG.*;
+
+/**
+ * Summary description for Deck.
+ */
+public class Deck
+{
+	public final int DECKSIZE;
+	protected int cardNum = 0;
+	protected Card deck [];
+
+	public Deck(final int DECKSIZE)
+	{
+		deck = new Card[DECKSIZE];
+		this.DECKSIZE = DECKSIZE;
+	}
+}

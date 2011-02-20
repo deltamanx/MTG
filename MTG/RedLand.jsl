@@ -1,0 +1,23 @@
+package MTG;
+
+/**
+ * Summary description for RedLand.
+ */
+public class RedLand extends Card
+{
+	static Card mountain;
+
+	public void mountain()
+	{
+		mountain = new Card("Mountain", Type.LAND, CardColor.COLORLESS);
+		mountain.
+		mountain.setCardText("Tap to add one red mana to your mana pool");
+		mountain.setManaType1(CardColor.NONE);
+		mountain.setManaCost1(0);
+	}
+
+	public RedLand()
+	{
+		
+	}
+}

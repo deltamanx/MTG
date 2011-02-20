@@ -1,0 +1,25 @@
+package MTG;
+
+/**
+ * Summary description for Program
+ */
+public class MTG
+{
+
+	static RedInstant r;
+
+	public MTG()
+	{
+		r = new RedInstant();
+	}
+
+	public static void main(String[] args) throws Exception
+	{
+		MTG mtg = new MTG();
+		System.out.println(r.lightningBolt.getName());
+		System.out.println(r.lightningBolt.getCardText());
+		System.out.println(r.lightningBolt.getType());
+		System.out.println(r.lightningBolt.getColor());
+		Thread.sleep(3000);
+	}
+}

@@ -1,0 +1,77 @@
+package MTG;
+import java.awt.*;
+
+/**
+ * Summary description for Card.
+ */
+public class Card
+{
+	//BLACK = 4,
+	//WHITE = 5,
+	//BLUE = 2,
+	//RED = 1,
+	//GREEN = 3,
+	//ARTIFACT = 6,
+	//ANY = 0,
+	//NONE = -1
+	private CardColor cardCol = CardColor.NONE;
+	//-1 = NONE,
+	//1 = Monster,
+	//2 = Sorcery,
+	//3 = Instant,
+	//4 = Land
+	private Type cardType = Type.NONE;
+
+	//Card Texts
+	private String cardName = null;
+	private String cardEffect = null;
+
+	//Card cost
+	private CardColor manaType1 = CardColor.NONE;
+	private int manaCost1 = 0;
+	private CardColor manaType2 = CardColor.NONE;
+	private int manaCost2 = 0;
+
+	enum CardColor
+	{
+		RED(1),
+		BLUE(2),
+		GREEN(3),
+		BLACK(4),
+		WHITE(5),
+		ARTIFACT(6),
+		ANY(0),
+		NONE(-1);
+	}
+
+	enum Type
+	{
+		MONSTER(1),
+		SORCERY(2),
+		INSTANT(3),
+		LAND(4),
+		NONE(-1);
+	}
+
+	public Card(String name, Type type, CardColor color)
+	{
+		cardName = name;
+		cardType = type;
+		cardCol = color;
+	}
+
+	public String getName()
+	{
+		return cardName;
+	}
+
+	public Type getType()
+	{
+		return cardType;
+	}
+
+	public CardColor getColor()
+	{
+		return cardCol;
+	}
+}

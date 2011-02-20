@@ -1,0 +1,17 @@
+package MTG;
+import MTG.*;
+
+/**
+ * Summary description for GraveYard.
+ */
+public class GraveYard
+{
+	protected Card grave [];
+
+	public GraveYard()
+	{
+		grave = new Card[100];
+		for (int i = 0; i < 100; i++)
+			grave[i] = null;
+	}
+}

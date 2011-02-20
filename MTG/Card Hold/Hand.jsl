@@ -1,0 +1,18 @@
+package MTG.Card_Hold;
+import MTG.*;
+
+/**
+ * Summary description for Hand.
+ */
+public class Hand
+{
+	//Normally max ammount is 7;
+	protected Card cards[] = new Card[] { null, null, null, null, null, null, null, null, null, null };
+
+	public Hand()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}

@@ -1,0 +1,15 @@
+package MTG.Card_Defs;
+import MTG.*;
+
+/**
+ * Summary description for Instant.
+ */
+public class Instant
+{
+	public Instant()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}

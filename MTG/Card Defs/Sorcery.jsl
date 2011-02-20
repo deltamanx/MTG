@@ -1,0 +1,15 @@
+package MTG.Card_Defs;
+import MTG.*;
+
+/**
+ * Summary description for Sorcery.
+ */
+public class Sorcery
+{
+	public Sorcery()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}
