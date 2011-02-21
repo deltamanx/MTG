@@ -1,0 +1,40 @@
+package MTG;
+/**
+ * Summary description for BlueInstant.
+ */
+public class BlueInstant extends Instant
+{
+	public static BlueInstant cards[] = new BlueInstant[3];
+	protected static final CardColor color = CardColor.BLUE;
+	protected SubType subType = SubType.OTHER;
+
+	protected BlueInstant()
+	{
+		buildCards();
+	}
+
+	public BlueInstant(String name, SubType sub, int manaCost1)
+	{
+		super(name, sub, color, color, manaCost1);
+		subType = sub;
+	}
+
+	public BlueInstant(String name, SubType sub, int manaCost1, CardColor manaType2, int manaCost2)
+	{
+		super(name, sub, color, color, manaCost1, manaType2, manaCost2);
+		subType = sub;
+	}
+
+	private void buildCards()
+	{
+		//Cancel
+		cards[0] = new BlueInstant("Cancel", SubType.NEGATE, 1, CardColor.ANY, 2);
+		cards[0].setCardText("Counter-Target Spell");
+		//Mana leak
+		cards[1] = new BlueInstant("Mana Leak", SubType.NEGATE, 1, CardColor.ANY, 1);
+		cards[1].setCardText("Counter Target spell unless controller pays 3 mana.");
+		//Negate
+		cards[2] = new BlueInstant("Negate", SubType.NEGATE, 1, CardColor.ANY, 1);
+		cards[2].setCardText("Counter Target non-creature spell.");
+	}
+}

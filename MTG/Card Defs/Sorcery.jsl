@@ -1,15 +1,42 @@
-package MTG.Card_Defs;
-import MTG.*;
+package MTG;
 
 /**
  * Summary description for Sorcery.
  */
-public class Sorcery
+public class Sorcery extends Card
 {
-	public Sorcery()
+	protected static final Type type = Type.SORCERY;
+	protected SubType subType = SubType.OTHER;
+
+	protected Sorcery()
 	{
-		//
-		// TODO: Add Constructor Logic here
-		//
+	}
+
+	public Sorcery(String name, SubType sub, CardColor color, CardColor manaType1, int manaCost1)
+	{
+		super(name, type, color);
+		subType = sub;
+		setManaType1(manaType1);
+		setManaCost1(manaCost1);
+	}
+
+	public Sorcery(String name, SubType sub, CardColor color, CardColor manaType1, int manaCost1, CardColor manaType2, int manaCost2)
+	{
+		super(name, type, color);
+		subType = sub;
+		setManaType1(manaType1);
+		setManaCost1(manaCost1);
+		setManaType2(manaType2);
+		setManaCost2(manaCost2);
+	}
+
+	//Sub Type
+	protected void setSubType(SubType sub)
+	{
+		subType = sub;
+	}
+	public SubType getSubType()
+	{
+		return subType;
 	}
 }

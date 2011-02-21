@@ -1,0 +1,55 @@
+package MTG;
+
+/**
+ * Summary description for Player.
+ */
+public class Player
+{
+	protected int health = 20;
+	protected Deck deck = null;
+	//1 - Red, 2 - Blue, 3 - Green, 4 - Black, 5 - White
+	protected int manaPool[] = new int[5];
+	protected Card mana[] = new Card[25];
+	protected Hand hand = null;
+	protected GraveYard grave = null;
+
+	protected Player()
+	{
+	}
+
+	protected Player(int hp, Deck dk, Hand hd, GraveYard gy)
+	{
+		health = hp;
+		deck = dk;
+		hand = hd;
+		grave = gy;
+	}
+
+	//Health
+	protected void setHealth(int hp)
+	{
+		health = hp;
+	}
+	public int getHealth()
+	{
+		return health;
+	}
+
+	//Deck
+	public Deck getDeck()
+	{
+		return deck;
+	}
+
+	//Hand
+	public Hand getHand()
+	{
+		return hand;
+	}
+
+	//Grave
+	public GraveYard getGrave()
+	{
+		return grave;
+	}
+}

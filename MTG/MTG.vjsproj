@@ -31,6 +31,9 @@
   <ItemGroup>
     <Compile Include="BattleField\Player1.jsl" />
     <Compile Include="BattleField\Player2.jsl" />
+    <Compile Include="Card Defs\Blue\BlueSorcery.jsl" />
+    <Compile Include="Card Defs\Blue\BlueInstant.jsl" />
+    <Compile Include="Card Defs\Blue\BlueLand.jsl" />
     <Compile Include="Card Defs\Instant.jsl" />
     <Compile Include="Card Defs\Land.jsl" />
     <Compile Include="Card Defs\Monster.jsl" />
@@ -39,10 +42,16 @@
     <Compile Include="Card.jsl" />
     <Compile Include="Card Hold\Deck.jsl" />
     <Compile Include="Card Hold\GraveYard.jsl" />
-    <Compile Include="RedInstant.jsl" />
+    <Compile Include="Card Defs\Red\RedInstant.jsl" />
+    <Compile Include="Card Hold\Red Deck\Fire Bomber.jsl" />
     <Compile Include="MTG.jsl" />
+    <Compile Include="Player.jsl" />
     <Compile Include="Properties\AssemblyInfo.jsl" />
-    <Compile Include="RedLand.jsl" />
+    <Compile Include="Card Defs\Red\RedLand.jsl" />
+    <Compile Include="Card Defs\Red\RedSorcery.jsl" />
+    <Compile Include="Window\ContentPanel.jsl" />
+    <Compile Include="Window\HandC.jsl" />
+    <Compile Include="Window\Window.jsl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualJSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

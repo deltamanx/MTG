@@ -1,9 +1,9 @@
-package MTG.BattleField;
+package MTG;
 
 /**
  * Summary description for Player1.
  */
-public class Player1
+public class Player1 extends Player
 {
 	public Player1()
 	{

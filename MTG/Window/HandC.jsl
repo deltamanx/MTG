@@ -1,0 +1,21 @@
+//TEMPORARY!
+
+package MTG;
+
+import java.awt.TextArea;
+/**
+ * Summary description for Hand.
+ */
+public class HandC extends TextArea
+{
+	String text = "";
+
+	public HandC()
+	{
+		super("", 10, 20);
+		setVisible(true);
+		for (int i = 0; i < 7; i++)
+			text = MTG.h.cards[i].getName() + ";\n" + text;
+		setText(text);
+	}
+}

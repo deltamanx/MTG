@@ -1,15 +1,43 @@
-package MTG.Card_Defs;
-import MTG.*;
+package MTG;
 
 /**
  * Summary description for Instant.
  */
-public class Instant
+public class Instant extends Card
 {
-	public Instant()
+	protected static final Type type = Type.INSTANT;
+	protected SubType subType = SubType.OTHER;
+
+	protected Instant()
 	{
-		//
-		// TODO: Add Constructor Logic here
-		//
+
+	}
+
+	public Instant(String name, SubType sub, CardColor color, CardColor manaType1, int manaCost1)
+	{
+		super(name, type, color);
+		subType = sub;
+		setManaType1(manaType1);
+		setManaCost1(manaCost1);
+	}
+
+	public Instant(String name, SubType sub, CardColor color, CardColor manaType1, int manaCost1, CardColor manaType2, int manaCost2)
+	{
+		super(name, type, color);
+		subType = sub;
+		setManaType1(manaType1);
+		setManaCost1(manaCost1);
+		setManaType2(manaType2);
+		setManaCost2(manaCost2);
+	}
+
+	//Sub Type
+	protected void setSubType(SubType sub)
+	{
+		subType = sub;
+	}
+	public SubType getSubType()
+	{
+		return subType;
 	}
 }

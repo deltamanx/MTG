@@ -1,0 +1,43 @@
+package MTG;
+
+/**
+ * Summary description for RedSorcery.
+ */
+public class RedSorcery extends Sorcery
+{
+	public static RedSorcery cards[] = new RedSorcery[3];
+	protected static final CardColor color = CardColor.RED;
+	protected SubType subType = SubType.OTHER;
+
+	protected RedSorcery()
+	{
+		buildCards();
+	}
+
+	public RedSorcery(String name, SubType sub, int manaCost1)
+	{
+		super(name, sub, color, color, manaCost1);
+		subType = sub;
+	}
+
+	public RedSorcery(String name, SubType sub, int manaCost1, CardColor manaType2, int manaCost2)
+	{
+		super(name, sub, color, color, manaCost1, manaType2, manaCost2);
+		subType = sub;
+	}
+
+	public void buildCards()
+	{
+		//Pyroclasm
+		cards[0] = new RedSorcery("Pyroclasm", SubType.DAMAGE, 1, CardColor.ANY, 1);
+		cards[0].setCardText("Pyroclasm deals 2 damage to each \ncreature.");
+		//Fireball
+		cards[1] = new RedSorcery("Fireball", SubType.DAMAGE, 1, CardColor.ANY, -1);
+		cards[1].setCardText("Fireball deals X damage divided evenly, \n raounded down, amoung any number of\n" +
+							 "target creatures and/or players.\nFireball cost 1 mana more to cast for each\n" +
+							 "target beyond the first.");
+		//Earthquake
+		cards[2] = new RedSorcery("Earthquake", SubType.DAMAGE, 1, CardColor.ANY, -1);
+		cards[2].setCardText("Earthquake deals X damage to each \n creature without flying and each player.");
+	}
+}

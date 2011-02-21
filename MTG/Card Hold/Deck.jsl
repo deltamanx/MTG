@@ -1,18 +1,44 @@
 package MTG;
-import MTG.*;
 
 /**
  * Summary description for Deck.
  */
 public class Deck
 {
-	public final int DECKSIZE;
+	protected String name = null;
+	protected Deck[] decks = new Deck [1];
+	public int DECKSIZE;
 	protected int cardNum = 0;
 	protected Card deck [];
+
+	protected Deck()
+	{
+		decks[0] = new Fire_Bomber();
+	}
 
 	public Deck(final int DECKSIZE)
 	{
 		deck = new Card[DECKSIZE];
 		this.DECKSIZE = DECKSIZE;
+	}
+
+	//Cards
+	protected void setCards(Card[] cards)
+	{
+		deck = cards;
+	}
+	public Card[] getCards()
+	{
+		return deck;
+	}
+
+	//Name
+	protected void setName(String name)
+	{
+		this.name = name;
+	}
+	public String getName()
+	{
+		return name;
 	}
 }

@@ -1,0 +1,40 @@
+package MTG;
+/**
+ * Summary description for RedInstant.
+ */
+public class RedInstant extends Instant
+{
+	public static RedInstant cards[] = new RedInstant[3];
+	protected static final CardColor color = CardColor.RED;
+	protected SubType subType = SubType.OTHER;
+
+	protected RedInstant()
+	{
+		buildCards();
+	}
+
+	public RedInstant(String name, SubType sub, int manaCost1)
+	{
+		super(name, sub, color, color, manaCost1);
+		subType = sub;
+	}
+
+	public RedInstant(String name, SubType sub, int manaCost1, CardColor manaType2, int manaCost2)
+	{
+		super(name, sub, color, color, manaCost1, manaType2, manaCost2);
+		subType = sub;
+	}
+
+	private void buildCards()
+	{
+		//Lightning Bolt
+		cards[0] = new RedInstant("Lightning Bolt", SubType.DAMAGE, 1);
+		cards[0].setCardText("Deal 3 damage to target creature or player");
+		//Lava Axe
+		cards[1] = new RedInstant("Lava Axe", SubType.DAMAGE, 1, CardColor.ANY, 4);
+		cards[1].setCardText("Deal 5 damage to target player.");
+		//Seismic Strike
+		cards[2] = new RedInstant("Seismic Strike", SubType.DAMAGE, 1, CardColor.ANY, 2);
+		cards[2].setCardText("Seismic strike deals damage to target \ncreature equals to the number of \n Mountains you control.");
+	}
+}

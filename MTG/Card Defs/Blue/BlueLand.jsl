@@ -1,0 +1,26 @@
+package MTG;
+
+/**
+ * Summary description for BlueLand.
+ */
+public class BlueLand extends Land
+{
+	public static BlueLand cards[] = new BlueLand[1];
+	protected static final CardColor color = CardColor.BLUE;
+
+	protected BlueLand()
+	{
+		buildCards();
+	}
+
+	public BlueLand(String name)
+	{
+		super(name, color);
+	}
+
+	private void buildCards()
+	{
+		//Mountain
+		cards[0] = new BlueLand("Island");
+	}
+}

@@ -1,0 +1,33 @@
+package MTG;
+
+/**
+ * Summary description for BlueSorcery.
+ */
+public class BlueSorcery
+{
+	public static BlueSorcery cards[] = new BlueSorcery[3];
+	protected static final CardColor color = CardColor.BLUE;
+	protected SubType subType = SubType.OTHER;
+
+	protected BlueSorcery()
+	{
+		buildCards();
+	}
+
+	public BlueSorcery(String name, SubType sub, int manaCost1)
+	{
+		super(name, sub, color, color, manaCost1);
+		subType = sub;
+	}
+
+	public BlueSorcery(String name, SubType sub, int manaCost1, CardColor manaType2, int manaCost2)
+	{
+		super(name, sub, color, color, manaCost1, manaType2, manaCost2);
+		subType = sub;
+	}
+
+	public void buildCards()
+	{
+
+	}
+}

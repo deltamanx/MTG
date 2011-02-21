@@ -1,0 +1,17 @@
+package MTG;
+
+import java.awt.Panel;
+import java.awt.FlowLayout;
+/**
+ * Summary description for ContentPanel.
+ */
+public class ContentPanel extends Panel
+{
+	protected HandC h;
+
+	public ContentPanel()
+	{
+		super(new FlowLayout());
+		add(h = new HandC());
+	}
+}

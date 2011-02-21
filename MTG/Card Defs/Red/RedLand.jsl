@@ -1,0 +1,26 @@
+package MTG;
+
+/**
+ * Summary description for RedLand.
+ */
+public class RedLand extends Land
+{
+	public static RedLand cards[] = new RedLand[1];
+	protected static final CardColor color = CardColor.RED;
+
+	protected RedLand()
+	{
+		buildCards();
+	}
+
+	public RedLand(String name)
+	{
+		super(name, color);
+	}
+
+	private void buildCards()
+	{
+		//Mountain
+		cards[0] = new RedLand("Mountain");
+	}
+}

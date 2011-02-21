@@ -1,0 +1,34 @@
+package MTG;
+
+/**
+ * Summary description for Fire_Bomber.
+ */
+public class Fire_Bomber extends Deck
+{
+	public Fire_Bomber()
+	{
+		super(41);
+		setName("Firebomber");
+		buildDeck();
+	}
+
+	public void buildDeck()
+	{
+		deck[0] = RedInstant.cards[0]; // Couple of lightning bolts
+		deck[1] = RedInstant.cards[0];
+
+		deck[2] = RedInstant.cards[1]; // And a Lava Axe
+		for (int i = 3; i < 15; i++)
+
+			deck[i] = RedLand.cards[0]; //Fill up with 12 mountains
+		for (int i = 15; i < 20; i++)
+			deck[i] = BlueLand.cards[0]; //Fill up with 5 islands
+		
+		deck[20] = BlueInstant.cards[2]; // Negate
+		deck[21] = RedInstant.cards[2]; //Seismic Strike x2
+		deck[22] = RedInstant.cards[2];
+		deck[23] = RedSorcery.cards[0]; //Pyroclasm
+		deck[24] = RedSorcery.cards[1]; //Fireball
+		deck[25] = RedSorcery.cards[2]; //Earthquake
+	}
+}

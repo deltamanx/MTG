@@ -1,5 +1,4 @@
-package MTG.Card_Hold;
-import MTG.*;
+package MTG;
 
 /**
  * Summary description for Hand.
@@ -7,12 +6,13 @@ import MTG.*;
 public class Hand
 {
 	//Normally max ammount is 7;
-	protected Card cards[] = new Card[] { null, null, null, null, null, null, null, null, null, null };
+	public Card cards[] = new Card[] { null, null, null, null, null, null, null, null, null, null };
 
 	public Hand()
 	{
-		//
-		// TODO: Add Constructor Logic here
-		//
+		for (int i = 0; i < 4; i++)
+			cards[i] = RedInstant.cards[0];
+		for (int i = 4; i < 7; i++)
+			cards[i] = RedLand.cards[0];
 	}
 }

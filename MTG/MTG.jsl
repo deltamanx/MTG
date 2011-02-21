@@ -5,21 +5,19 @@ package MTG;
  */
 public class MTG
 {
-
-	static RedInstant r;
+	//static RedInstant r;
+	static Hand h;
 
 	public MTG()
 	{
-		r = new RedInstant();
+		RedInstant ri = new RedInstant();
+		RedLand rl = new RedLand();
+		h = new Hand();
+		Window w = new Window();
 	}
 
 	public static void main(String[] args) throws Exception
 	{
 		MTG mtg = new MTG();
-		System.out.println(r.lightningBolt.getName());
-		System.out.println(r.lightningBolt.getCardText());
-		System.out.println(r.lightningBolt.getType());
-		System.out.println(r.lightningBolt.getColor());
-		Thread.sleep(3000);
 	}
 }

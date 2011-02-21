@@ -1,0 +1,49 @@
+package MTG;
+import java.awt.Frame;
+import java.awt.event.*;
+/**
+ * Summary description for Window.
+ */
+public class Window extends Frame
+	implements WindowListener
+{
+	protected ContentPanel cp;
+
+	public Window()
+	{
+		super("Magic: The Gathering");
+		addWindowListener(this);
+		setSize(800, 600);
+		add (cp = new ContentPanel());
+		setVisible(true);
+	}
+
+	public void windowOpened(WindowEvent we)
+	{
+
+	}
+	public void windowClosed(WindowEvent we)
+	{
+
+	}
+	public void windowClosing(WindowEvent we)
+	{
+		System.exit(0);
+	}
+	public void windowActivated(WindowEvent we)
+	{
+
+	}
+	public void windowDeactivated(WindowEvent we)
+	{
+
+	}
+	public void windowIconified(WindowEvent we)
+	{
+
+	}
+	public void windowDeiconified(WindowEvent we)
+	{
+
+	}
+}

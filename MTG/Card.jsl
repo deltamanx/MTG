@@ -54,6 +54,17 @@ public class Card
 		NONE(-1);
 	}
 
+	enum SubType
+	{
+		NEGATE(1),
+		DAMAGE(2),
+		BUFF(3),
+		DEBUFF(4),
+		TAP(5),
+		DESTROY(6),
+		OTHER(7);
+	}
+
 	public Card()
 	{
 	}
@@ -89,54 +100,81 @@ public class Card
 	}
 
 	//Set get pairs
+
+	//Name
 	public String getName()
 	{
 		return cardName;
 	}
-
 	protected void setName(String name)
 	{
 		cardName = name;
 	}
 
+	//Type
 	public Type getType()
 	{
 		return cardType;
 	}
-
 	protected void setType(Type type)
 	{
 		cardType = type;
 
 	}
 
+	//Color
 	public CardColor getColor()
 	{
 		return cardCol;
 	}
-
 	protected void setColor(CardColor color)
 	{
 		cardCol = color;
 	}
 
+	//Text
 	public String getCardText()
 	{
 		return cardText;
 	}
-
 	protected void setCardText(String text)
 	{
 		cardText = text;
 	}
 
+	//Mana Cost #1
 	protected void setManaType1(CardColor color)
 	{
 		manaType1 = color;
 	}
-
 	protected void setManaCost1(int cost)
 	{
 		manaCost1 = cost;
+	}
+	public CardColor getManaType1()
+	{
+		return manaType1;
+	}
+	public int getManaCost1()
+	{
+		return manaCost1;
+	}
+
+	//Mana Cost #2
+	protected void setManaType2(CardColor color)
+	{
+		manaType2 = color;
+	}
+	protected void setManaCost2(int cost)
+	{
+		manaCost2 = cost;
+	}
+	public CardColor getManaType2()
+	{
+		return manaType2;
+	}
+	public int getManaCost2()
+	{
+		return manaCost2;
 	}
 }
