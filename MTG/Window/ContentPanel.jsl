@@ -7,11 +7,12 @@ import java.awt.FlowLayout;
  */
 public class ContentPanel extends Panel
 {
-	protected HandC h;
+	protected static HandC h;
 
 	public ContentPanel()
 	{
 		super(new FlowLayout());
 		add(h = new HandC());
+		add(new Draw());
 	}
 }

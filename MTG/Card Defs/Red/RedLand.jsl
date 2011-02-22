@@ -5,11 +5,12 @@ package MTG;
  */
 public class RedLand extends Land
 {
-	public static RedLand cards[] = new RedLand[1];
+	public static RedLand cards[];
 	protected static final CardColor color = CardColor.RED;
 
 	protected RedLand()
 	{
+		cards = new RedLand[1];
 		buildCards();
 	}
 
@@ -19,6 +20,11 @@ public class RedLand extends Land
 	}
 
 	private void buildCards()
+	{
+		mountain();
+	}
+
+	private void mountain()
 	{
 		//Mountain
 		cards[0] = new RedLand("Mountain");

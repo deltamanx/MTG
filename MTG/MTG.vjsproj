@@ -7,8 +7,9 @@
     <ProjectGuid>{64135651-86E2-4308-9D31-AFD1070F85DE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MTG</RootNamespace>
-    <AssemblyName>MTG</AssemblyName>
+    <AssemblyName>Magic the Gathering</AssemblyName>
     <WarningLevel>4</WarningLevel>
+    <StartupObject>MTG.MTG</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +45,10 @@
     <Compile Include="Card Hold\GraveYard.jsl" />
     <Compile Include="Card Defs\Red\RedInstant.jsl" />
     <Compile Include="Card Hold\Red Deck\Fire Bomber.jsl" />
+    <Compile Include="Card Defs\Other\ColorlessLand.jsl" />
+    <Compile Include="Card Defs\Red\RedMonster.jsl" />
+    <Compile Include="Card Defs\Other\ColorlessMonster.jsl" />
+    <Compile Include="Window\Draw.jsl" />
     <Compile Include="MTG.jsl" />
     <Compile Include="Player.jsl" />
     <Compile Include="Properties\AssemblyInfo.jsl" />

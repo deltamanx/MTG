@@ -13,13 +13,13 @@ public class Deck
 
 	protected Deck()
 	{
-		decks[0] = new Fire_Bomber();
+		decks[0] = shuffleDeck(new Fire_Bomber());
 	}
 
 	public Deck(final int DECKSIZE)
 	{
-		deck = new Card[DECKSIZE];
 		this.DECKSIZE = DECKSIZE;
+		deck = new Card[DECKSIZE];
 	}
 
 	//Cards
@@ -40,5 +40,37 @@ public class Deck
 	public String getName()
 	{
 		return name;
+	}
+
+	protected static Deck shuffleDeck(Deck toShuffle)
+	{
+		int rand, size = toShuffle.DECKSIZE;
+		Card[] newCards = new Card[toShuffle.DECKSIZE];
+		for (int i = 0; i < size; i++)
+		{
+			rand = (int)(Math.random() * size);
+			if (toShuffle.deck[rand] != null)
+			{
+				newCards[i] = toShuffle.deck[rand];
+				toShuffle.deck[rand] = null;
+			}
+			else
+			{
+				i--;
+			}
+		}
+		Deck d = new Deck(size);
+		d.deck = newCards;
+		return d;
+	}
+
+	static class Shuffle extends Deck
+	{
+		protected Shuffle()
+		{
+
+		}
+
+		
 	}
 }

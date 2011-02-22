@@ -18,6 +18,7 @@ public class Sorcery extends Card
 		subType = sub;
 		setManaType1(manaType1);
 		setManaCost1(manaCost1);
+		s = true;
 	}
 
 	public Sorcery(String name, SubType sub, CardColor color, CardColor manaType1, int manaCost1, CardColor manaType2, int manaCost2)
@@ -28,6 +29,7 @@ public class Sorcery extends Card
 		setManaCost1(manaCost1);
 		setManaType2(manaType2);
 		setManaCost2(manaCost2);
+		s = true;
 	}
 
 	//Sub Type

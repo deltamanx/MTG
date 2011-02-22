@@ -1,0 +1,22 @@
+package MTG;
+import java.awt.Button;
+import java.awt.event.*;
+/**
+ * Summary description for Draw.
+ */
+public class Draw extends Button
+	implements ActionListener
+{
+	public Draw()
+	{
+		super("Re-draw Cards");
+		addActionListener(this);
+	}
+
+	public void actionPerformed(ActionEvent ae)
+	{
+		MTG.d = new Deck();
+		MTG.h = new Hand(MTG.d.decks[0], new Player());
+		ContentPanel.h.drawText();
+	}
+}

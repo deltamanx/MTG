@@ -7,12 +7,21 @@ public class MTG
 {
 	//static RedInstant r;
 	static Hand h;
+	static Deck d;
 
 	public MTG()
 	{
+		Player p = new Player();
 		RedInstant ri = new RedInstant();
 		RedLand rl = new RedLand();
-		h = new Hand();
+		RedSorcery rs = new RedSorcery();
+		RedMonster rm = new RedMonster();
+		BlueInstant bi = new BlueInstant();
+		BlueLand bl = new BlueLand();
+		BlueSorcery bs = new BlueSorcery();
+		ColorlessLand cl = new ColorlessLand();
+		d = new Deck();
+		h = new Hand(d.decks[0], p);
 		Window w = new Window();
 	}
 

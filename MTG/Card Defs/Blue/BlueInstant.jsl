@@ -27,12 +27,25 @@ public class BlueInstant extends Instant
 
 	private void buildCards()
 	{
+		cancel();
+		manaLeak();
+		negate();
+	}
+
+	private void cancel()
+	{
 		//Cancel
 		cards[0] = new BlueInstant("Cancel", SubType.NEGATE, 1, CardColor.ANY, 2);
 		cards[0].setCardText("Counter-Target Spell");
+	}
+	private void manaLeak()
+	{
 		//Mana leak
 		cards[1] = new BlueInstant("Mana Leak", SubType.NEGATE, 1, CardColor.ANY, 1);
 		cards[1].setCardText("Counter Target spell unless controller pays 3 mana.");
+	}
+	private void negate()
+	{
 		//Negate
 		cards[2] = new BlueInstant("Negate", SubType.NEGATE, 1, CardColor.ANY, 1);
 		cards[2].setCardText("Counter Target non-creature spell.");

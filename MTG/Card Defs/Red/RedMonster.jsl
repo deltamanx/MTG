@@ -1,0 +1,72 @@
+package MTG;
+
+/**
+ * Summary description for RedMonster.
+ */
+public class RedMonster extends Monster
+{
+	protected static RedMonster[] cards;
+	protected static final CardColor color = CardColor.RED;
+
+	protected RedMonster()
+	{
+		cards = new RedMonster[7];
+		buildCards();
+	}
+
+	public RedMonster(String name, int manaCost1, int attack, int toughness, MonsterAbilities monAbil[])
+	{
+		super(name, color, color, manaCost1, attack, toughness, monAbil);
+	}
+
+	public RedMonster(String name, int manaCost1, CardColor manaType2, int manaCost2, 
+				      int attack, int toughness, MonsterAbilities monAbil[])
+	{
+		super(name, color, color, 1, manaType2, manaCost2, attack, toughness, monAbil);
+	}
+
+	public void buildCards()
+	{
+		ragingGoblin();
+		goblinPiker();
+		lightningElemental();
+		wallOfFire();
+		prodigalPyromancer();
+		dragonWhelp();
+		berserkersOfBloodridge();
+	}
+
+	private void ragingGoblin()
+	{
+		cards[0] = new RedMonster("Raging Goblin", 1, 1, 1, new MonsterAbilities[] { MonsterAbilities.HASTE });
+	}
+	private void goblinPiker()
+	{
+		cards[1] = new RedMonster("Goblin Piker", 1, CardColor.ANY, 1, 2, 1, new MonsterAbilities[] { });
+	}
+	private void lightningElemental()
+	{
+		cards[2] = new RedMonster("Lightning Elemental", 1, CardColor.ANY, 3, 4, 1, 
+								  new MonsterAbilities[] { MonsterAbilities.HASTE });
+	}
+	private void wallOfFire()
+	{
+		cards[3] = new RedMonster("Wall of Fire", 2, CardColor.ANY, 1, 0, 5,
+								  new MonsterAbilities[] { MonsterAbilities.DEFENDER, MonsterAbilities.BUFF01 });
+	}
+	private void prodigalPyromancer()
+	{
+		cards[4] = new RedMonster("Prodigal Pyromancer", 1, CardColor.ANY, 2, 1, 1,
+								  new MonsterAbilities[] { MonsterAbilities.TAP_TO_PING1 });
+	}
+	private void dragonWhelp()
+	{
+		cards[5] = new RedMonster("Dragon Whelp", 2, CardColor.ANY, 2, 2, 3, 
+								  new MonsterAbilities[] { MonsterAbilities.BUFF01 });
+	}
+	private void berserkersOfBloodridge()
+	{
+		cards[6] = new RedMonster("Berserkers of Blood Ridge", 1, CardColor.ANY, 4, 4, 4,
+								  new MonsterAbilities[] { MonsterAbilities.MUST_ATTACK });
+	}
+}

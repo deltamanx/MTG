@@ -1,15 +1,56 @@
-package MTG.Card_Defs;
+package MTG;
 import MTG.*;
 
 /**
  * Summary description for Monster.
  */
-public class Monster
+public class Monster extends Card
 {
-	public Monster()
+	protected static final Type type = Type.MONSTER;
+
+	protected Monster()
 	{
-		//
-		// TODO: Add Constructor Logic here
-		//
+	}
+
+	public Monster(String name, CardColor color, CardColor manaType1, int manaCost1, int attack, int toughness, 
+				   MonsterAbilities[] monAbil)
+	{
+		super(name, type, color);
+		stats = new MonsterStats(attack, toughness);
+		monAbilities = monsterAbilityNum(monAbil);
+		setManaType1(manaType1);
+		setManaCost1(manaCost1);
+		m = true;
+		s = true;
+	}
+
+	public Monster(String name, CardColor color, CardColor manaType1, int manaCost1, CardColor manaType2, 
+				   int manaCost2, int attack, int toughness, MonsterAbilities[] monAbil)
+	{
+		super(name, type, color);
+		stats = new MonsterStats(attack, toughness);
+		monAbilities = monsterAbilityNum(monAbil);
+		setManaType1(manaType1);
+		setManaCost1(manaCost1);
+		setManaType2(manaType2);
+		setManaCost2(manaCost2);
+		m = true;
+		s = true;
+	}
+
+	enum Class
+	{
+		NONE(1),
+		WARRIOR(2),
+		BERSERKER(4),
+		ASSASSIN(8),
+		ROGUE(16),
+		SHAMAN(32),
+		DRUID(64),
+		CLERIC(128),
+		SOLDIER(256),
+		WIZARD(512),
+		SCOUT(1024),
+		MONK(2048);
 	}
 }

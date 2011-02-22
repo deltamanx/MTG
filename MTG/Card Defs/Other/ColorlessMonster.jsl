@@ -1,0 +1,14 @@
+package MTG;
+
+/**
+ * Summary description for ColorlessMonster.
+ */
+public class ColorlessMonster
+{
+	public ColorlessMonster()
+	{
+		//
+		// TODO: Add Constructor Logic here
+		//
+	}
+}

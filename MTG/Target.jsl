@@ -1,0 +1,53 @@
+package MTG;
+
+/**
+ * Summary description for Target.
+ */
+public class Target
+{
+	public Target()
+	{
+	}
+
+	protected static boolean isPlayer(Card o)
+	{
+		try
+		{
+			if (o.p)
+			{
+				return true;
+			}
+			return false;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+	protected static boolean isMonster(Card o)
+	{
+		try
+		{
+			if (o.m)
+				return true;
+			return false;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+	protected static boolean isSpell(Card o)
+	{
+		try
+		{
+			if (o.s)
+				return true;
+			return false;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+	}
+}

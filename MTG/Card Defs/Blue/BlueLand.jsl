@@ -20,7 +20,12 @@ public class BlueLand extends Land
 
 	private void buildCards()
 	{
-		//Mountain
+		island();
+	}
+
+	private void island()
+	{
+		//Island
 		cards[0] = new BlueLand("Island");
 	}
 }

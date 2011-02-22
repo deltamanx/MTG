@@ -32,6 +32,15 @@ public class Card
 	private CardColor manaType2 = CardColor.NONE;
 	private int manaCost2 = 0;
 
+	//Monster Exclusive
+	protected MonsterStats stats = null;
+	protected int monAbilities = 0;
+
+	//Booleans
+	protected boolean p = false;
+	protected boolean s = false;
+	protected boolean m = false;
+
 	enum CardColor
 	{
 		RED(1),
@@ -44,7 +53,6 @@ public class Card
 		ANY(0),
 		NONE(-1);
 	}
-
 	enum Type
 	{
 		MONSTER(1),
@@ -53,7 +61,6 @@ public class Card
 		LAND(4),
 		NONE(-1);
 	}
-
 	enum SubType
 	{
 		NEGATE(1),
@@ -176,5 +183,145 @@ public class Card
 	public int getManaCost2()
 	{
 		return manaCost2;
+	}
+
+	public boolean equals(Card card)
+	{
+		if (card.getName().equals(getName()))
+		{
+			if (card.getColor().Equals(getColor()))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	class MonsterStats
+	{
+		private int attack = 0, toughness = 1;
+		private int atkPlusCounters = 0, atkMinusCounters = 0;
+		private int tgnPlusCounters = 0, tgnMinusCounters = 0;
+
+		public MonsterStats(int attack, int toughness)
+		{
+			this.attack = attack;
+			this.toughness = toughness;
+		}
+
+		//Attack
+		protected void setAttack(int attack)
+		{
+			this.attack = attack;
+		}
+		public int getAttack()
+		{
+			return attack;
+		}
+
+		//Tougness
+		protected void setToughness(int toughness)
+		{
+			this.toughness = toughness;
+		}
+		public int getToughness()
+		{
+			return toughness;
+		}
+
+		//Attack Plus Counters
+		protected void setAtkPlusCounters(int counters)
+		{
+			atkPlusCounters = counters;
+		}
+		public int getAtkPlusCounters()
+		{
+			return atkPlusCounters;
+		}
+		protected void addAtkPlusCounter()
+		{
+			atkPlusCounters += 1;
+		}
+
+		//Attack Minus Counters
+		protected void setAtkMinusCounters(int counters)
+		{
+			atkMinusCounters = counters;
+		}
+		public int getAtkMinusCounters()
+		{
+			return atkPlusCounters;
+		}
+		protected void addAtkMinusCounter()
+		{
+			atkMinusCounters += 1;
+		}
+
+		//Tougness Plus Counters
+		protected void setTgnPlusCounters(int counters)
+		{
+			tgnPlusCounters = counters;
+		}
+		public int getTgnPlusCounters()
+		{
+			return tgnPlusCounters;
+		}
+		protected void addTgnPlusCounter()
+		{
+			tgnPlusCounters += 1;
+		}
+
+		//Tougness Minus Counters
+		protected void setTgnMinusCounters(int counters)
+		{
+			tgnMinusCounters = counters;
+		}
+		public int getTgnMinusCounters()
+		{
+			return tgnMinusCounters;
+		}
+		protected void addTgnMinusCounter()
+		{
+			tgnMinusCounters += 1;
+		}
+
+		//Stats with counters
+		public int getAtkWithCounters()
+		{
+			return attack + atkPlusCounters - atkMinusCounters;
+		}
+		public int getToughnessWithCounters()
+		{
+			return toughness + tgnPlusCounters - tgnMinusCounters;
+		}
+	}
+
+	enum MonsterAbilities
+	{
+		TAP_CREATURE(1),
+		TAP_FOR_MANA(2),
+		TAP_FOR_MANA2(4),
+		TAP_TO_PING1(8),
+		TAP_TO_PING2(16),
+		DEATHTOUCH(32),
+		INTIMIDATE(64),
+		INDISTRUCTIBLE(128),
+		UNBLOCKABLE(256),
+		KICKER(512),
+		FLYING(1024),
+		DEFENDER(2048),
+		REACH(4096),
+		HASTE(8192),
+		FIRST_STRIKE(16384),
+		BUFF01(32768),
+		MUST_ATTACK(65536);
+	}
+
+	protected int monsterAbilityNum(MonsterAbilities[] monAbil)
+	{
+		int num = 0;
+		for (int i = 0; i < monAbil.length; i++)
+			num += monAbil[i].hashCode();
+		return num;
 	}
 }

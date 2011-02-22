@@ -6,13 +6,26 @@ package MTG;
 public class Hand
 {
 	//Normally max ammount is 7;
+	protected int deckSize, cardCount;
+	protected Deck deck = null;
 	public Card cards[] = new Card[] { null, null, null, null, null, null, null, null, null, null };
 
 	public Hand()
 	{
-		for (int i = 0; i < 4; i++)
-			cards[i] = RedInstant.cards[0];
-		for (int i = 4; i < 7; i++)
-			cards[i] = RedLand.cards[0];
+	}
+
+	protected Hand(Deck d, Player p)
+	{
+		int randNum;
+		deck = d;
+		deckSize = deck.DECKSIZE;
+		for (int i = 0; i < 7; i++)
+		{
+			if (deck.deck[i] != null)
+			{
+				cards[i] = deck.deck[i];
+				deckSize--;
+			}
+		}
 	}
 }

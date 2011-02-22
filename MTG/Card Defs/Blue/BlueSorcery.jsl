@@ -3,7 +3,7 @@ package MTG;
 /**
  * Summary description for BlueSorcery.
  */
-public class BlueSorcery
+public class BlueSorcery extends Sorcery
 {
 	public static BlueSorcery cards[] = new BlueSorcery[3];
 	protected static final CardColor color = CardColor.BLUE;

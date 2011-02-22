@@ -1,0 +1,32 @@
+package MTG;
+
+/**
+ * Summary description for ColorlessLand.
+ */
+public class ColorlessLand extends Land
+{
+	public static ColorlessLand cards[];
+	protected static final CardColor color = CardColor.COLORLESS;
+
+	protected ColorlessLand()
+	{
+		cards = new ColorlessLand[1];
+		buildCards();
+	}
+
+	public ColorlessLand(String name)
+	{
+		super(name, color);
+	}
+
+	public void buildCards()
+	{
+		terraMorphicExpanse();
+	}
+
+	private void terraMorphicExpanse()
+	{
+		//Terramorphic Expanse
+		cards[0] = new ColorlessLand("Terramorphic Expanse");
+	}
+}

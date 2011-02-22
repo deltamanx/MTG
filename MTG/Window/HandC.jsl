@@ -14,8 +14,22 @@ public class HandC extends TextArea
 	{
 		super("", 10, 20);
 		setVisible(true);
-		for (int i = 0; i < 7; i++)
-			text = MTG.h.cards[i].getName() + ";\n" + text;
-		setText(text);
+		drawText();
+	}
+
+	public void drawText()
+	{
+		try
+		{
+			setText("");
+			text = "";
+			for (int i = 0; i < 7; i++)
+				text = MTG.h.cards[i].getName() + ";\n" + text;
+			setText(text);
+		}
+		catch (NullPointerException e)
+		{
+			drawText();
+		}
 	}
 }

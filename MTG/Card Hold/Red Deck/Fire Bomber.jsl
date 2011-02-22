@@ -7,19 +7,21 @@ public class Fire_Bomber extends Deck
 {
 	public Fire_Bomber()
 	{
-		super(41);
+		super(34);
 		setName("Firebomber");
 		buildDeck();
 	}
 
 	public void buildDeck()
 	{
+		for (int i = 0; i < DECKSIZE; i++)
+			deck[i] = null;
 		deck[0] = RedInstant.cards[0]; // Couple of lightning bolts
 		deck[1] = RedInstant.cards[0];
-
 		deck[2] = RedInstant.cards[1]; // And a Lava Axe
-		for (int i = 3; i < 15; i++)
 
+		//Basic Land
+		for (int i = 3; i < 15; i++)
 			deck[i] = RedLand.cards[0]; //Fill up with 12 mountains
 		for (int i = 15; i < 20; i++)
 			deck[i] = BlueLand.cards[0]; //Fill up with 5 islands
@@ -30,5 +32,14 @@ public class Fire_Bomber extends Deck
 		deck[23] = RedSorcery.cards[0]; //Pyroclasm
 		deck[24] = RedSorcery.cards[1]; //Fireball
 		deck[25] = RedSorcery.cards[2]; //Earthquake
+		deck[26] = ColorlessLand.cards[0]; //Terramorphic Expanse
+		deck[27] = RedMonster.cards[0]; //Raging Goblin
+		deck[28] = RedMonster.cards[1]; //Goblin Piker
+		deck[29] = RedMonster.cards[2]; //Lightning Elemental x2
+		deck[30] = RedMonster.cards[2];
+		deck[31] = RedMonster.cards[3]; //Wall of Fire
+		deck[31] = RedMonster.cards[4]; //Pyromancer
+		deck[32] = RedMonster.cards[5]; //Dragon Whelp
+		deck[33] = RedMonster.cards[6]; //Berserkers of Blood Ridge
 	}
 }

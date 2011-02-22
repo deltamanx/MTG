@@ -3,15 +3,20 @@ package MTG;
 /**
  * Summary description for Player.
  */
-public class Player
+public class Player extends Card
 {
 	protected int health = 20;
 	protected Deck deck = null;
-	//1 - Red, 2 - Blue, 3 - Green, 4 - Black, 5 - White
-	protected int manaPool[] = new int[5];
-	protected Card mana[] = new Card[25];
+	//0 - Red, 1 - Blue, 2 - Green, 3 - Black, 4 - White
+	protected int manaPool[];
+	protected Card manaUnTapped[];
+	protected Card manaTapped[];
 	protected Hand hand = null;
 	protected GraveYard grave = null;
+	protected FieldLand land;
+	protected Grave g;
+	protected Health h;
+	protected Mana m;
 
 	protected Player()
 	{
@@ -19,10 +24,13 @@ public class Player
 
 	protected Player(int hp, Deck dk, Hand hd, GraveYard gy)
 	{
-		health = hp;
+		g = new Grave(gy);
+		land = new FieldLand();
+		m = new Mana();
+		h = new Health(hp);
+		p = true;
 		deck = dk;
 		hand = hd;
-		grave = gy;
 	}
 
 	//Health
@@ -51,5 +59,235 @@ public class Player
 	public GraveYard getGrave()
 	{
 		return grave;
+	}
+
+	//Mana Handler
+	class Mana extends Player
+	{
+		public Mana()
+		{
+			for (int i = 0; i < 25; i++)
+			{
+				manaTapped[i] = null;
+				manaUnTapped[i] = null;
+			}
+		}
+
+		//Return signle mana color
+		public int getRedTotal()
+		{
+			return manaPool[0];
+		}
+		public int getBlueTotal()
+		{
+			return manaPool[1];
+		}
+		public int getGreenTotal()
+		{
+			return manaPool[2];
+		}
+		public int getBlackTotal()
+		{
+			return manaPool[3];
+		}
+		public int getWhiteTotal()
+		{
+			return manaPool[4];
+		}
+
+		//Any mana
+		public int getAnyMana()
+		{
+			return (getRedTotal() + getBlackTotal() + getBlueTotal() + getGreenTotal() + getWhiteTotal());
+		}
+		public int getAnyManaExcept(CardColor color)
+		{
+			return (getAnyMana() - manaPool[color.hashCode() - 1]);
+		}
+		public int getAnyManaExcept(CardColor color1, CardColor color2)
+		{
+			return ((getAnyMana() - manaPool[color1.hashCode() - 1]) - manaPool[color2.hashCode() - 1]);
+		}
+
+		//Untapping
+		public void unTapAll()
+		{
+			for (int i = 0; i < 25; i++)
+			{
+				if (manaTapped[i] != null)
+				{
+					unTap(i);			
+				}
+			}
+		}
+		public boolean unTap(int num)
+		{
+			for (int j = 0; j < 25; j++)
+			{
+				if (manaUnTapped[j] == null)
+				{
+					manaUnTapped[j] = manaTapped[num];
+					manaTapped[num] = null;
+					return true;
+				}
+			}
+			return false;
+		}
+
+		//Tap
+		public void tapAll()
+		{
+			for (int i = 0; i < 25; i++)
+			{
+				if (manaUnTapped[i] != null)
+				{
+					tap(i);
+				}
+			}
+		}
+		public boolean tap(int num)
+		{
+			if (manaUnTapped[num] != null)
+			{
+				for (int j = 0; j < 25; j++)
+				{
+					if (manaTapped[j] == null)
+					{
+						manaTapped[j] = manaUnTapped[num];
+						manaUnTapped[num] = null;
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+		protected void tapForMana(CardColor color)
+		{
+			for (int i = 0; i < 25; i++)
+			{
+				if (manaUnTapped[i].getColor().Equals(color))
+				{
+					tap(i);
+					manaPool[color.hashCode() - 1] += 1;
+					return;
+				}
+			}
+		}
+
+		//Add to mana pool
+		protected void addToMana (CardColor color, int amount)
+		{
+			manaPool[color.hashCode() - 1] += amount;
+		}
+
+		//Has many to pay
+		public boolean hasManaCost(CardColor color, int amount)
+		{
+			if (manaPool[color.hashCode() - 1] >= amount)
+				return true;
+			return false;
+		}
+		public boolean hasManaCost(CardColor color1, int amount1, CardColor color2, int amount2)
+		{
+			if (hasManaCost(color1, amount1) && hasManaCost(color2, amount2))
+				return true;
+			return false;
+		}
+	}
+
+	//Grave Yard Handler
+	class Grave extends Player
+	{
+		protected Grave(GraveYard gy)
+		{
+			grave = gy;
+		}
+
+		public Card[] getGraveYard()
+		{
+			return grave.grave;
+		}
+		public boolean isInGrave(Card card)
+		{
+			for (int i = 0; i < grave.grave.length; i++)
+				if (grave.grave[i].equals(card))
+					return true;
+			return false;
+		}
+		public Card getGraveCard(int num)
+		{
+			try
+			{
+				return grave.grave[num];
+			}
+			catch (ArrayIndexOutOfBoundsException e)
+			{
+				return null;
+			}
+		}
+
+		protected void sendToGrave(Card card)
+		{
+			for (int i = 0; i < grave.grave.length; i++)
+			{
+				if (grave.grave[i] == null)
+				{
+					grave.grave[i] = card;
+					return;
+				}
+			}
+		}
+		protected Card getFromGrave(Card card)
+		{
+			for (int i = 0; i < grave.grave.length; i++)
+			{
+				if (grave.grave[i].equals(card))
+				{
+					grave.grave[i] = null;
+					return card;
+				}
+			}
+			return null;
+		}
+	}
+
+	//Land Handler
+	class FieldLand extends Player
+	{
+		protected FieldLand()
+		{
+			manaPool = new int[5];
+			manaTapped = new Card[25];
+			manaUnTapped = new Card[25];
+		}
+	}
+
+	//Health Handler
+	class Health extends Player
+	{
+		protected Health(int hp)
+		{
+			health = hp;
+		}
+
+		//Health
+		public int getHealth()
+		{
+			return health;
+		}
+		protected void setHealth(int health)
+		{
+			this.health = health;
+		}
+
+		//Damage and healing
+		protected void takeDamage(int damage)
+		{
+			health -= damage;
+		}
+		protected void healDamage(int health)
+		{
+			this.health += health;
+		}
 	}
 }

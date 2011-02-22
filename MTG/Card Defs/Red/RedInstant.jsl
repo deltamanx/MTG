@@ -27,12 +27,25 @@ public class RedInstant extends Instant
 
 	private void buildCards()
 	{
+		lightningBolt();
+		lavaAxe();
+		seismicStrike();
+	}
+
+	private void lightningBolt()
+	{
 		//Lightning Bolt
 		cards[0] = new RedInstant("Lightning Bolt", SubType.DAMAGE, 1);
 		cards[0].setCardText("Deal 3 damage to target creature or player");
+	}
+	private void lavaAxe()
+	{
 		//Lava Axe
 		cards[1] = new RedInstant("Lava Axe", SubType.DAMAGE, 1, CardColor.ANY, 4);
 		cards[1].setCardText("Deal 5 damage to target player.");
+	}
+	private void seismicStrike()
+	{
 		//Seismic Strike
 		cards[2] = new RedInstant("Seismic Strike", SubType.DAMAGE, 1, CardColor.ANY, 2);
 		cards[2].setCardText("Seismic strike deals damage to target \ncreature equals to the number of \n Mountains you control.");
