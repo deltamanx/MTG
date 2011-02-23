@@ -1,0 +1,17 @@
+package MTG;
+import java.awt.TextArea;
+/**
+ * Summary description for Log.
+ */
+public class Log extends TextArea
+{
+	public Log()
+	{
+		super(5, 80);
+	}
+
+	public void append(String text)
+	{
+		super.append(text);
+	}
+}

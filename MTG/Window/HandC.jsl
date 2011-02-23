@@ -2,18 +2,21 @@
 
 package MTG;
 
-import java.awt.TextArea;
+import java.awt.List;
+import java.awt.event.*;
 /**
  * Summary description for Hand.
  */
-public class HandC extends TextArea
+public class HandC extends List
+	implements ItemListener
 {
-	String text = "";
+	protected static String selected = "";
 
 	public HandC()
 	{
-		super("", 10, 20);
+		super(10);
 		setVisible(true);
+		addItemListener(this);
 		drawText();
 	}
 
@@ -21,15 +24,26 @@ public class HandC extends TextArea
 	{
 		try
 		{
-			setText("");
-			text = "";
+			removeAll();
 			for (int i = 0; i < 7; i++)
-				text = MTG.h.cards[i].getName() + ";\n" + text;
-			setText(text);
+				add(MTG.h.deck.deck[i].getName());
 		}
 		catch (NullPointerException e)
 		{
 			drawText();
+		}
+	}
+
+	public void itemStateChanged(ItemEvent ie)
+	{
+		try
+		{
+			ContentPanel.l.append((selected = getItem(Integer.parseInt(ie.getItem().toString()))) + "\n");
+			ContentPanel.l.validate();
+		}
+		catch (Exception e)
+		{
+			System.out.println("?");
 		}
 	}
 }

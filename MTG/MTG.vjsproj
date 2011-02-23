@@ -30,6 +30,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BattleField.jsl" />
     <Compile Include="BattleField\Player1.jsl" />
     <Compile Include="BattleField\Player2.jsl" />
     <Compile Include="Card Defs\Blue\BlueSorcery.jsl" />
@@ -48,6 +49,9 @@
     <Compile Include="Card Defs\Other\ColorlessLand.jsl" />
     <Compile Include="Card Defs\Red\RedMonster.jsl" />
     <Compile Include="Card Defs\Other\ColorlessMonster.jsl" />
+    <Compile Include="Log.jsl" />
+    <Compile Include="PlayCard.jsl" />
+    <Compile Include="Target.jsl" />
     <Compile Include="Window\Draw.jsl" />
     <Compile Include="MTG.jsl" />
     <Compile Include="Player.jsl" />

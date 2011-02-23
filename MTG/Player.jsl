@@ -5,12 +5,11 @@ package MTG;
  */
 public class Player extends Card
 {
+	//
+	protected Card[] playerLand, playerCreature;
+
 	protected int health = 20;
 	protected Deck deck = null;
-	//0 - Red, 1 - Blue, 2 - Green, 3 - Black, 4 - White
-	protected int manaPool[];
-	protected Card manaUnTapped[];
-	protected Card manaTapped[];
 	protected Hand hand = null;
 	protected GraveYard grave = null;
 	protected FieldLand land;
@@ -24,9 +23,9 @@ public class Player extends Card
 
 	protected Player(int hp, Deck dk, Hand hd, GraveYard gy)
 	{
-		g = new Grave(gy);
-		land = new FieldLand();
+		g = new Grave(this, gy);
 		m = new Mana();
+		land = new FieldLand(m);
 		h = new Health(hp);
 		p = true;
 		deck = dk;
@@ -61,9 +60,20 @@ public class Player extends Card
 		return grave;
 	}
 
+	//Mana
+	public Mana getMana()
+	{
+		return m;
+	}
+
 	//Mana Handler
 	class Mana extends Player
 	{
+		//0 - Red, 1 - Blue, 2 - Green, 3 - Black, 4 - White
+		protected int manaPool[];
+		protected Card manaUnTapped[];
+		protected Card manaTapped[];
+
 		public Mana()
 		{
 			for (int i = 0; i < 25; i++)
@@ -196,21 +206,24 @@ public class Player extends Card
 	}
 
 	//Grave Yard Handler
-	class Grave extends Player
+	class Grave extends GraveYard
 	{
-		protected Grave(GraveYard gy)
+		protected Player p;
+
+		protected Grave(Player p, GraveYard gy)
 		{
-			grave = gy;
+			p.grave = gy;
+			this.p = p;
 		}
 
 		public Card[] getGraveYard()
 		{
-			return grave.grave;
+			return p.grave.grave;
 		}
 		public boolean isInGrave(Card card)
 		{
-			for (int i = 0; i < grave.grave.length; i++)
-				if (grave.grave[i].equals(card))
+			for (int i = 0; i < p.grave.grave.length; i++)
+				if (p.grave.grave[i].equals(card))
 					return true;
 			return false;
 		}
@@ -218,7 +231,7 @@ public class Player extends Card
 		{
 			try
 			{
-				return grave.grave[num];
+				return p.grave.grave[num];
 			}
 			catch (ArrayIndexOutOfBoundsException e)
 			{
@@ -228,22 +241,22 @@ public class Player extends Card
 
 		protected void sendToGrave(Card card)
 		{
-			for (int i = 0; i < grave.grave.length; i++)
+			for (int i = 0; i < p.grave.grave.length; i++)
 			{
-				if (grave.grave[i] == null)
+				if (p.grave.grave[i] == null)
 				{
-					grave.grave[i] = card;
+					p.grave.grave[i] = card;
 					return;
 				}
 			}
 		}
 		protected Card getFromGrave(Card card)
 		{
-			for (int i = 0; i < grave.grave.length; i++)
+			for (int i = 0; i < p.grave.grave.length; i++)
 			{
-				if (grave.grave[i].equals(card))
+				if (p.grave.grave[i].equals(card))
 				{
-					grave.grave[i] = null;
+					p.grave.grave[i] = null;
 					return card;
 				}
 			}
@@ -254,11 +267,11 @@ public class Player extends Card
 	//Land Handler
 	class FieldLand extends Player
 	{
-		protected FieldLand()
+		protected FieldLand(Mana m)
 		{
-			manaPool = new int[5];
-			manaTapped = new Card[25];
-			manaUnTapped = new Card[25];
+			m.manaPool = new int[5];
+			m.manaTapped = new Card[25];
+			m.manaUnTapped = new Card[25];
 		}
 	}
 
@@ -288,6 +301,76 @@ public class Player extends Card
 		protected void healDamage(int health)
 		{
 			this.health += health;
+		}
+	}
+
+	class PlayCard extends Player
+	{
+		protected PlayCard()
+		{
+			playerLand = new Card[25];
+			for (int i = 0; i < playerLand.length; i++)
+				playerLand[i] = null;
+
+			playerCreature = new Card[30];
+			for (int i = 0; i < playerCreature.length; i++)
+				playerCreature[i] = null;
+		}
+
+		protected int findEmpty(Card[] c)
+		{
+			try
+			{
+				for (int i = 0; i < c.length; i++)
+				{
+					if (c[i].Equals(null))
+					{
+						return i;
+					}
+				}
+				return -1;
+			}
+			catch (Exception e)
+			{
+				return -1;
+			}
+		}
+		protected int findInstanceOf(Card[] ca, Card c)
+		{
+			try
+			{
+				for (int i = 0; i < ca.length; i++)
+				{
+					if (ca[i].equals(c))
+					{
+						return i;
+					}
+				}
+				return -1;
+			}
+			catch (Exception e)
+			{
+				return -1;
+			}
+		}
+		protected void playCard(Card c)
+		{
+			if (c.getType().equals(Type.LAND))
+			{
+				playerLand[findEmpty(playerLand)] = c;
+			}
+			else if (c.getType().equals(Type.MONSTER))
+			{
+				playerCreature[findEmpty(playerCreature)] = c;
+			}
+			else if (c.getType().equals(Type.NONE))
+			{
+				return;
+			}
+			else
+			{
+
+			}
 		}
 	}
 }

@@ -1,18 +1,28 @@
 package MTG;
 
 import java.awt.Panel;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 /**
  * Summary description for ContentPanel.
  */
 public class ContentPanel extends Panel
 {
 	protected static HandC h;
+	protected Panel p;
+	protected static Log l;
 
 	public ContentPanel()
 	{
-		super(new FlowLayout());
-		add(h = new HandC());
-		add(new Draw());
+		super(new GridLayout(2, 2));
+		p = new Panel();
+		h = new HandC();
+		//GridBagConstraints gbc = new GridBagConstraints();
+		//gbc.fill = GridBagConstraints.RELATIVE;
+		//g.setConstraints(h, gbc);
+		add(h);
+		add(p);
+		p.add(new Draw());
+		p.add(new PlayCard());
+		add(l = new Log());
 	}
 }
